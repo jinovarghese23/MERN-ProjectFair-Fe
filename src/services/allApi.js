@@ -39,6 +39,6 @@ export const editUserProjectApi = async (projectId,reqBody,reqheader)=>{
 }
 
 // delete project
-export const deleteProjectApi=async (projectId,reqHeader)=>{
-    return await commonApi('DELETE',`${BASE_URL}/project/delete/${projectId}`,"",reqHeader)
+export const deleteProjectApi = async(projectId,reqHeader)=>{
+    return await commonApi('DELETE',`${BASE_URL}/project/remove/${projectId}`,{},reqHeader)
 }

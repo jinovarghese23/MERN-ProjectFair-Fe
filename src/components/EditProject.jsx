@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { BASE_URL } from '../services/baseurl';
 import { editUserProjectApi } from '../services/allApi';
-import { useContext } from 'react';
-import { editProjectResponseContext } from '../context/ContextShare';
+import { editprojectResponseContext } from '../context/ContextShare';
 
 function EditProject({ project }) {
     const [show, setShow] = useState(false);
     const [preview, setPreview] = useState("")
-    const { editProjectResponse, SetEditProjectResponse } = useContext(editProjectResponseContext)
+    const {editprojectResponse, setEditProjectResponse }= useContext(editprojectResponseContext)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [projectDetails, setProjectDetails] = useState({
@@ -50,7 +49,7 @@ function EditProject({ project }) {
                 console.log(result)
                 if (result.status === 200) {
                     handleClose()
-                    SetEditProjectResponse(result)
+                    setEditProjectResponse(result)
                 }
             }
             else {
@@ -62,8 +61,8 @@ function EditProject({ project }) {
                 console.log("===update project result===");
                 console.log(result)
                 if (result.status === 200) {
-                    handleClose()
-                    SetEditProjectResponse(result)
+                    handleClose();
+                    setEditProjectResponse(result)
                 }
             }
         }
@@ -73,9 +72,8 @@ function EditProject({ project }) {
             setPreview(URL.createObjectURL(projectDetails.projectImage))
         }
     }, [projectDetails.projectImage])
-
     const handleClose1 = () => {
-        handleClose()
+        handleClose();
         setProjectDetails({
             id: project._id,
             title: project.title,
@@ -92,7 +90,7 @@ function EditProject({ project }) {
             <i class="fa-regular fa-pen-to-square text-primary" onClick={handleShow}></i>
             <Modal show={show} onHide={handleClose} size={"lg"}>
                 <Modal.Header closeButton>
-                    <Modal.Title className='text-success'>EDIT PROJECT</Modal.Title>
+                    <Modal.Title className='text-success'>ADD PROJECT</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='row'>

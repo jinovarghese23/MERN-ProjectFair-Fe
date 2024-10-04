@@ -1,19 +1,20 @@
 import React, { createContext, useState } from 'react'
 
-export const addProjectResponseContext = createContext()
-export const editProjectResponseContext = createContext()
+export const addProjectResponseContext = createContext();
+export const editprojectResponseContext = createContext();
 
 function ContextShare({ children }) {
     // children is predifined props name used to share data beween compoents
     // create a state that need to be shared;
-    const [addProjectResponse, setAddProjectResponse] = useState({})
-    const [editProjectResponse, SetEditProjectResponse] = useState({})
+    const [addProjectResponse, setAddProjectResponse] = useState({});
+    const [editprojectResponse, setEditProjectResponse] = useState({});
     return (
         <>
             <addProjectResponseContext.Provider value={{ addProjectResponse, setAddProjectResponse }}>
-                <editProjectResponseContext.Provider value={{ editProjectResponse, SetEditProjectResponse }}>
+                <editprojectResponseContext.Provider value={{ editprojectResponse, setEditProjectResponse }}>
                     {children}
-                </editProjectResponseContext.Provider>
+                </editprojectResponseContext.Provider>
+
             </addProjectResponseContext.Provider>
         </>
     )
