@@ -60,7 +60,7 @@ function MyProject() {
                                 <div className='d-flex ms-auto align-items-center'>
                                     <EditProject project={item} />
                                     <a href={item.website} target='_blank' className='btn'>
-                                        <i class="fa-solid fa-link"></i>
+                                        <i class="fa-solid fa-link text-info ms-2"></i>
                                     </a>
                                     <a href={item.github} target='_blank'
                                         className='btn'><i class="fa-brands fa-github"></i></a>
